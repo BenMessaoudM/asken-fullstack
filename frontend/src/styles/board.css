@@ -1,0 +1,111 @@
+.board-page {
+  padding: 2rem;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+}
+
+.board-carousel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 20px;
+}
+
+.board-scroll {
+  display: flex;
+  gap: 20px;
+  padding: 1rem;
+  width: max-content;
+  animation: scroll-horizontal 30s linear infinite;
+}
+
+@keyframes scroll-horizontal {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.board-card {
+  background: #fff;
+  border: 2px solid #a32f8e;
+  border-radius: 10px;
+  width: 240px;
+  height: 350px;
+  perspective: 1000px;
+  flex: 0 0 auto;
+}
+
+.board-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.board-card:hover .board-card-inner {
+  transform: rotateY(180deg);
+}
+
+.board-card-front,
+.board-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.board-card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.board-card-front img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid #ccc;
+}
+
+.board-card-front h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+}
+
+.board-card-back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.board-card-back p,
+.board-card-back em,
+.board-card-back .email {
+  margin: 5px 0;
+  word-wrap: break-word;
+  max-width: 90%;
+  overflow-wrap: break-word;
+}
+
+.board-card-back em {
+  font-style: italic;
+}
+
+.board-card-back .flags {
+  font-size: 1.2rem;
+  margin: 5px 0;
+}
