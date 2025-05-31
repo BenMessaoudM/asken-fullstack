@@ -51,11 +51,17 @@
   background: #CB52B5;
 }
 
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
 .status {
-  text-align: center;
-  margin-top: 1rem;
-  color: #333;
-  font-weight: 500;
+  margin-top: 10px;
+  font-weight: bold;
+  color: green;
 }
 
 /* Animation */

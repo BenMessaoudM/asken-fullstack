@@ -1,0 +1,38 @@
+.staff-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+}
+
+.staff-page h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #cb52b5;
+}
+
+.staff-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.staff-card {
+  border: 1px solid #cb52b5;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+}
+
+.staff-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.staff-card a {
+  color: #a32f8e;
+  text-decoration: none;
+}
+
+.staff-card a:hover {
+  text-decoration: underline;
+}
