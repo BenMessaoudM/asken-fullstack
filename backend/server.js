@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 
 import bookingRoutes from './api/booking.routes.js';
 import contactRoutes from './api/contact.routes.js';
-import indexRoutes from './api/index.js'; // ✅ Add this
+import indexRoutes from './api/index.js';
+import authRoutes from './api/auth.routes.js';
 
 dotenv.config();
 
@@ -14,9 +15,10 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api', indexRoutes); // ✅ Now /api/ping will return pong from ASK API
+app.use('/api', indexRoutes); 
 app.use('/api/booking', bookingRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 

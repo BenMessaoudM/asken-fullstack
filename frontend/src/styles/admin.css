@@ -1,0 +1,32 @@
+.admin-dashboard {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  padding: 0.5rem 1rem;
+  background-color: #a32f8e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #cb52b5;
+}
+
+.admin-links ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.admin-links li {
+  margin: 0.5rem 0;
+}

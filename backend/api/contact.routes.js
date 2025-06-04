@@ -1,46 +1,46 @@
-// routes/contact.routes.js
 import express from 'express';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import sendContactEmail from '../models/Contact.js';
+import Contact from '../models/Contact.js';
 
-dotenv.config();
 const router = express.Router();
 
-router.post('/contact', async (req, res) => {
-  const { name, reason, message } = req.body;
-
-  // Set recipients based on reason
-  let to;
-  if (reason === 'general') {
-    to = 'info@asken.fi';
-  } else if (reason === 'harassment') {
-    to = ['hello@asken.fi', 'jessica@asken.fi', 'frej@asken.fi'];
-  } else {
-    return res.status(400).json({ error: 'Invalid reason selected.' });
+router.post('/', async (req, res) => {
+  const { name, email, reason, message } = req.body;
+  if (!name || !email || !reason || !message) {
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
-  // Mail configuration
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
-  const mailOptions = {
-    from: process.env.SMTP_USER,
-    to,
-    subject: `New message from ${name}`,
-    text: `Reason: ${reason}\n\nMessage:\n${message}`,
-  };
-
+  // Save to DB
   try {
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Message sent successfully.' });
+    const newContact = new Contact({ name, email, reason, message });
+    await newContact.save();
+
+    // Send email
+    await sendContactEmail(req, res);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to send message.', details: err.message });
+    console.error('Error saving contact or sending email:', err);
+    res.status(500).json({ error: 'Failed to handle contact' });
   }
 });
+
+router.get('/', async (req, res) => {
+  try {
+    const messages = await Contact.find().sort({ createdAt: -1 });
+    res.json(messages);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching messages' });
+  }
+});
+// DELETE /api/contact/:id
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await Contact.findByIdAndDelete(id);
+    res.status(200).json({ message: "Message deleted" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete message" });
+  }
+});
+
 
 export default router;

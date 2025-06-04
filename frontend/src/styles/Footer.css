@@ -1,18 +1,53 @@
 .footer {
-  background: linear-gradient(to right, #A32F8E, #CB52B5);
-  color: white;
-  padding: 1.5rem 0;
-  text-align: center;
-  margin-top: 3rem;
-  font-size: 0.9rem;
+  background: linear-gradient(90deg, #A32F8E, #CB52B5);
+  color: #fff;
+  padding: 2rem 1rem 1rem;
+  margin-top: 4rem;
 }
 
-.footer a {
-  color: #ffffff;
-  font-weight: bold;
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.footer-left {
+  max-width: 250px;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.footer-address {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-right a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #f0f0f0;
   text-decoration: underline;
 }
 
-.footer a:hover {
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
   opacity: 0.8;
 }

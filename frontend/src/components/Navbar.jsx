@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">ASK</div>
+     <img src="/images/ASK logo vit.png" alt="ASKEN logo" className="footer-logo" />
       <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
         &#9776;
       </div>

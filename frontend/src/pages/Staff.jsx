@@ -9,7 +9,7 @@ const staffMembers = [
   },
   {
     name: "Andreas Lohse",
-    title: "ASK Secretary General",
+    title: "ASK General Secretary ",
     email: "andreas@asken.fi",
   },
 ];
